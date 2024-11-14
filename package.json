@@ -1,6 +1,6 @@
 {
   "name": "limitable",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "description": "Limitable is a simple library easy to use API ratelimiting library",
   "workspaces": [
     "packages/*"
