@@ -1,6 +1,6 @@
 {
   "name": "@limitable/ratelimit",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "./src/index.ts",
   "module": "./src/index.ts",
   "type": "module",
@@ -9,5 +9,8 @@
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "redis": "^4.7.0"
   }
 }

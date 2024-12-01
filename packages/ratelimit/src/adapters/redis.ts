@@ -9,11 +9,26 @@ export class RedisAdapter implements Adapter {
     this.redisClient.connect();
   }
 
-  public async set(key: string, value: string): Promise<void> {
-    await this.redisClient.set(key, value);
+  public async set(
+    key: string,
+    value: {
+      count: number;
+      expiresAt: number;
+    }
+  ): Promise<void> {
+    await this.redisClient.set(key, JSON.stringify(value));
   }
 
-  public async get(key: string): Promise<string | null> {
-    return await this.redisClient.get(key);
+  public async get(key: string): Promise<{
+    count: number;
+    expiresAt: number;
+  } | null> {
+    const value = await this.redisClient.get(key);
+    if (!value) return null;
+    const json = JSON.parse(value) satisfies {
+      count: number;
+      expiresAt: number;
+    };
+    return json;
   }
 }
